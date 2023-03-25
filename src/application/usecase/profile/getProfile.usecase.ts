@@ -5,18 +5,9 @@ import { CreateUserDto } from "src/infrastructure/controller/app/dto";
 
 @injectable()
 export class GetProfile {
-  protected validationPipe: ValidationPipe;
-
-  constructor() {
-    this.validationPipe = new ValidationPipe();
-  }
+  constructor() {}
 
   async execute(createUserDto: CreateUserDto): Promise<any> {
-    await this.validationPipe.transform(createUserDto, {
-      type: "custom",
-      metatype: CreateUserDto,
-    });
-
     try {
       return {
         data: null,

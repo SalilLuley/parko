@@ -31,7 +31,7 @@ yarn-error.log
 
 # example
 /quick-start
-/example_dist
+
 /example
 
 # tests
@@ -43,6 +43,6 @@ yarn-error.log
 /benchmarks/memory
 build/config\.gypi
 
-/env/dev.env
-
+/dist
+env
 package-lock.json

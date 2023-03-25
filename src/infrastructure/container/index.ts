@@ -1,8 +1,8 @@
-import { Container } from 'inversify/lib/container/container';
-import { GetProfile } from 'src/application/usecase';
-import { ICommandHandler } from 'src/core/handler/commandHandler';
-import { NAMED_TARGET } from '../common/namedTarget';
-import { TYPES } from '../common/types';
+import { Container } from "inversify/lib/container/container";
+import { GetProfile } from "src/application/usecase";
+import { ICommandHandler } from "src/parko/core/handler/commandHandler";
+import { NAMED_TARGET } from "../common/namedTarget";
+import { TYPES } from "../common/types";
 
 export const container = new Container();
 
