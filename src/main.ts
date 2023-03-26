@@ -1,14 +1,12 @@
 import { ValidationPipe } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from "@nestjs/swagger";
-import { AppModule } from "./infrastructure/controller/app.module";
 import "reflect-metadata";
+import { AppModule } from "./infrastructure";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.setGlobalPrefix(
-    `${process.env.API_PREFIX.trim()}/${process.env.VERSION.trim()}`
-  );
+  app.setGlobalPrefix(`${process.env.API_PREFIX}/${process.env.VERSION}`);
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()

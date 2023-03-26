@@ -44,5 +44,5 @@ yarn-error.log
 build/config\.gypi
 
 /dist
-env
+env/dev.env
 package-lock.json

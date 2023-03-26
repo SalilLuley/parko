@@ -4,10 +4,10 @@ import { Container } from "inversify/lib/container/container";
 import { ICommandHandler } from "src/parko/core/handler/commandHandler";
 import { NAMED_TARGET, TYPES } from "src/infrastructure/common";
 import { container } from "src/infrastructure/container";
-import { CreateUserDto } from "./dto/createUser.dto";
+import { CreateUserReqDto } from "./dto/createUserReq.dto";
 
 @Controller("profile")
-@ApiExtraModels(CreateUserDto)
+@ApiExtraModels(CreateUserReqDto)
 export class AppController {
   private container: Container;
   constructor() {
@@ -16,12 +16,12 @@ export class AppController {
 
   @Post("insert")
   @ApiOkResponse()
-  async create(@Body() createUserDto: CreateUserDto) {
+  async create(@Body() createUserReqDto: CreateUserReqDto) {
     const commandHandler: ICommandHandler =
       this.container.getNamed<ICommandHandler>(
         TYPES.ICommandHandler,
         NAMED_TARGET.getProfile
       );
-    return commandHandler.execute(createUserDto);
+    return commandHandler.execute(createUserReqDto);
   }
 }
