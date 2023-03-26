@@ -6,7 +6,7 @@ export class ProfileRepository implements IProfileRepository {
   createProfile(id: number): ProfileM {
     return {
       employeeCode: "ABC",
-      id: 123,
+      id,
       name: "Salil",
     };
   }

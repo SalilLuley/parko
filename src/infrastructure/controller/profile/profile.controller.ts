@@ -8,7 +8,7 @@ import { CreateUserReqDto, CreateUserResDto } from "./dto";
 
 @Controller("profile")
 @ApiExtraModels(CreateUserReqDto, CreateUserResDto)
-export class AppController {
+export class ProfileController {
   private container: Container;
   constructor() {
     this.container = container;
@@ -20,7 +20,7 @@ export class AppController {
     const commandHandler: ICommandHandler =
       this.container.getNamed<ICommandHandler>(
         TYPES.ICommandHandler,
-        NAMED_TARGET.getProfile
+        NAMED_TARGET.createProfile
       );
     return commandHandler.execute(createUserReqDto);
   }

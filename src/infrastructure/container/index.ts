@@ -14,7 +14,7 @@ export const container = new Container();
 container
   .bind<ICommandHandler>(TYPES.ICommandHandler)
   .to(CreateProfile)
-  .whenTargetNamed(NAMED_TARGET.getProfile);
+  .whenTargetNamed(NAMED_TARGET.createProfile);
 
 //Profile
 container
