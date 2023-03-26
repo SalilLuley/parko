@@ -1,9 +1,9 @@
-export declare enum ResponseStatusTextEnum {
+export enum ResponseStatusTextEnum {
   SUCCESS = "Success",
   FAILED = "Failed",
   FORBIDDEN = "Forbidden",
-  BADREQUEST = "Bad Request",
+  BAD_REQUEST = "Bad Request",
   UNAUTHORIZED = "Unauthorized",
-  SERVERERROR = "Internal Server Error",
+  SERVER_ERROR = "Internal Server Error",
   NOTFOUND = "NOT FOUND",
 }

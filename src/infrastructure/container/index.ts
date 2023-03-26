@@ -1,5 +1,5 @@
 import { Container } from "inversify/lib/container/container";
-import { GetProfile } from "src/application/usecase";
+import { CreateProfile } from "src/application/usecase";
 import { IProfileDataService, IProfileRepository } from "src/domain";
 import { IProfileDtoConvertor } from "src/domain/convertors/profile.convertor";
 import { ICommandHandler } from "src/parko/core/handler/commandHandler";
@@ -13,7 +13,7 @@ export const container = new Container();
 
 container
   .bind<ICommandHandler>(TYPES.ICommandHandler)
-  .to(GetProfile)
+  .to(CreateProfile)
   .whenTargetNamed(NAMED_TARGET.getProfile);
 
 //Profile

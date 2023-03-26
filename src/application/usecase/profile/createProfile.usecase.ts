@@ -1,14 +1,16 @@
-import { InternalServerErrorException, ValidationPipe } from "@nestjs/common";
+import { InternalServerErrorException } from "@nestjs/common";
 import { inject, injectable } from "inversify";
 import { ProfileM } from "src/domain";
 import { IProfileDtoConvertor } from "src/domain/convertors/profile.convertor";
 import { IProfileDataService } from "src/domain/dataservice/profile.dataservice";
+import { CreateUserReqDto, CreateUserResDto } from "src/infrastructure";
 import { TYPES } from "src/infrastructure/common";
 import { MESSAGES } from "src/infrastructure/common/messages";
-import { CreateUserReqDto } from "src/infrastructure/controller/profile/dto";
+import { IResponse } from "src/parko/core/domain";
+import { ICommandHandler } from "src/parko/core/handler/commandHandler";
 
 @injectable()
-export class GetProfile {
+export class CreateProfile implements ICommandHandler {
   constructor(
     @inject(TYPES.IProfileDataService)
     private profileDataService: IProfileDataService,
@@ -16,14 +18,22 @@ export class GetProfile {
     private profileDtoConvertor: IProfileDtoConvertor
   ) {}
 
-  async execute(createUserReqDto: CreateUserReqDto): Promise<any> {
+  async execute(
+    createUserReqDto: CreateUserReqDto
+  ): Promise<IResponse<CreateUserResDto>> {
     const profileM: ProfileM =
-      await this.profileDtoConvertor.toGetProfileResDto(createUserReqDto);
-    const data = await this.profileDataService.getProfile(profileM);
+      await this.profileDtoConvertor.toCreateUserReqDto(createUserReqDto);
+
+    const resProfileM: ProfileM = await this.profileDataService.createProfile(
+      profileM
+    );
+
+    const data: CreateUserResDto =
+      await this.profileDtoConvertor.toGetProfileResDto(resProfileM);
     try {
       return {
         data,
-        message: MESSAGES.PROFILE.GET,
+        message: MESSAGES.PROFILE.GET.SUCCESS,
       };
     } catch (error) {
       throw new InternalServerErrorException(error);

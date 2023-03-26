@@ -9,8 +9,9 @@ export class ProfileDataService implements IProfileDataService {
     @inject(TYPES.IProfileRepository)
     private profileRepository: IProfileRepository
   ) {}
-  getProfile(profileM: ProfileM): ProfileM {
+
+  createProfile(profileM: ProfileM): ProfileM {
     const { id } = profileM;
-    return this.profileRepository.getProfile(id);
+    return this.profileRepository.createProfile(id);
   }
 }

@@ -1,3 +1,5 @@
+import { IResponse } from "../domain";
+
 export interface ICommandHandler {
-  execute(user?: any, command?: any): void;
+  execute(session?: any, args?: any): Promise<IResponse<any>>;
 }

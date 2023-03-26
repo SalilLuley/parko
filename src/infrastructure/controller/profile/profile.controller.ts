@@ -4,10 +4,10 @@ import { Container } from "inversify/lib/container/container";
 import { ICommandHandler } from "src/parko/core/handler/commandHandler";
 import { NAMED_TARGET, TYPES } from "src/infrastructure/common";
 import { container } from "src/infrastructure/container";
-import { CreateUserReqDto } from "./dto/createUserReq.dto";
+import { CreateUserReqDto, CreateUserResDto } from "./dto";
 
 @Controller("profile")
-@ApiExtraModels(CreateUserReqDto)
+@ApiExtraModels(CreateUserReqDto, CreateUserResDto)
 export class AppController {
   private container: Container;
   constructor() {

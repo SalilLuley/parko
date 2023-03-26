@@ -1,1 +1,1 @@
-export { GetProfile } from './getProfile.usecase';
+export { CreateProfile } from "./createProfile.usecase";

@@ -1,6 +1,7 @@
-import { CreateUserReqDto } from "src/infrastructure";
-import { ProfileM } from "../model/profile.model";
+import { CreateUserReqDto, CreateUserResDto } from "src/infrastructure";
+import { ProfileM } from "../model";
 
 export interface IProfileDtoConvertor {
-  toGetProfileResDto(createUserReqDto: CreateUserReqDto): ProfileM;
+  toCreateUserReqDto(CreateUserReqDto: CreateUserReqDto): ProfileM;
+  toGetProfileResDto(profileM: ProfileM): CreateUserResDto;
 }
