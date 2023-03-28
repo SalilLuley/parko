@@ -1,5 +1,5 @@
 export class ProfileM {
-  id: number;
-  name: string;
-  employeeCode: string;
+  userId: string;
+  lastName?: string;
+  firstName?: string;
 }

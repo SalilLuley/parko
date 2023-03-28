@@ -10,7 +10,7 @@ import { IResponse } from "src/parko/core/domain";
 import { ICommandHandler } from "src/parko/core/handler/commandHandler";
 
 @injectable()
-export class CreateProfile implements ICommandHandler {
+export class GetProfile implements ICommandHandler {
   constructor(
     @inject(TYPES.IProfileDataService)
     private profileDataService: IProfileDataService,
@@ -18,18 +18,10 @@ export class CreateProfile implements ICommandHandler {
     private profileDtoConvertor: IProfileDtoConvertor
   ) {}
 
-  async execute(
-    createUserReqDto: CreateUserReqDto
-  ): Promise<IResponse<CreateUserResDto>> {
-    const profileM: ProfileM =
-      await this.profileDtoConvertor.toCreateUserReqDto(createUserReqDto);
-
-    const resProfileM: ProfileM = await this.profileDataService.createProfile(
-      profileM
-    );
-
+  async execute(id: string): Promise<IResponse<CreateUserResDto>> {
+    const profileM: ProfileM = await this.profileDataService.getProfile(id);
     const data: CreateUserResDto =
-      await this.profileDtoConvertor.toGetProfileResDto(resProfileM);
+      await this.profileDtoConvertor.toGetProfileResDto(profileM);
     try {
       return {
         data,

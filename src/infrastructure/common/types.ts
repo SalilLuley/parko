@@ -3,4 +3,6 @@ export const TYPES = {
   IProfileDataService: Symbol.for("IProfileDataService"),
   IProfileDtoConvertor: Symbol.for("IProfileDtoConvertor"),
   IProfileRepository: Symbol.for("IProfileRepository"),
+  FirebaseRepo: Symbol.for("FirebaseRepo"),
+  IProfileModelConvertor: Symbol.for("IProfileModelConvertor"),
 };

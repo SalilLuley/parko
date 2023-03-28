@@ -1,5 +1,5 @@
-import { ProfileM } from "../model/profile.model";
+import { ProfileM } from "../model";
 
 export interface IProfileDataService {
-  createProfile(profileM: ProfileM): Promise<ProfileM>;
+  getProfile(id: string): Promise<ProfileM>;
 }

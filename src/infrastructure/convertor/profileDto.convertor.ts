@@ -6,7 +6,9 @@ import { CreateUserReqDto, CreateUserResDto } from "../controller";
 @injectable()
 export class ProfileDtoConvertor implements IProfileDtoConvertor {
   toCreateUserReqDto(createUserReqDto: CreateUserReqDto): ProfileM {
-    return { ...createUserReqDto };
+    return {
+      userId: createUserReqDto.id,
+    };
   }
 
   toGetProfileResDto(profileM: ProfileM): CreateUserResDto {

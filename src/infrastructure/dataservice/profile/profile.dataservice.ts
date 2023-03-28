@@ -1,27 +1,25 @@
 import { inject, injectable } from "inversify";
-import { IProfileRepository, ProfileM } from "src/domain";
+import {
+  IProfileModelConvertor,
+  IProfileRepository,
+  ProfileM,
+} from "src/domain";
 import { IProfileDataService } from "src/domain/dataservice/profile.dataservice";
-import { MetaDataFirestore, TYPES } from "src/infrastructure/common";
-import { FirebaseRepo } from "src/parko/database/domain/repository/firebase.repo";
+import { TYPES } from "src/infrastructure/common";
+import { UserEntity } from "src/infrastructure/entity";
 
 @injectable()
 export class ProfileDataService implements IProfileDataService {
   constructor(
-    private firebaseRepo: FirebaseRepo,
-
     @inject(TYPES.IProfileRepository)
-    private profileRepository: IProfileRepository
+    private profileRepository: IProfileRepository,
+    @inject(TYPES.IProfileModelConvertor)
+    private profileModelConvertor: IProfileModelConvertor
   ) {}
 
-  async createProfile(profileM: ProfileM): Promise<ProfileM> {
-    const snapshot = await this.firebaseRepo
-      .getDb()
-      .collection(MetaDataFirestore.users)
-      .doc("3kaZoBXdERkLrDxfW6Bsxn")
-      .get();
-
-    const users = snapshot.data();
-    const { id } = profileM;
-    return this.profileRepository.createProfile(id);
+  async getProfile(id: string): Promise<ProfileM> {
+    const userEntity: UserEntity =
+      await this.profileRepository.createProfile<UserEntity>(id);
+    return this.profileModelConvertor.toProfileMFromUserEntity(userEntity);
   }
 }

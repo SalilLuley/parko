@@ -5,6 +5,6 @@ import { ProfileController } from "./profile";
 @Module({
   imports: [],
   controllers: [ProfileController],
-  providers: [FirebaseRepo],
+  providers: [],
 })
 export class AppModule {}

@@ -1,9 +1,9 @@
-import { Injectable } from "@nestjs/common";
 import { initializeApp } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 import admin from "firebase-admin";
+import { injectable } from "inversify";
 
-@Injectable()
+@injectable()
 export class FirebaseRepo {
   private db: FirebaseFirestore.Firestore;
 
