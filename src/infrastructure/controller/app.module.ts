@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common";
-import { FirebaseRepo } from "src/parko/database/domain/repository/firebase.repo";
+import { GetProfile } from "src/application/usecase";
+import { LoggerModule } from "src/parko/logger/logger.module";
 import { ProfileController } from "./profile";
 
 @Module({
