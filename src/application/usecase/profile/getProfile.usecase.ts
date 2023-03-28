@@ -3,7 +3,7 @@ import { inject, injectable } from "inversify";
 import { ProfileM } from "src/domain";
 import { IProfileDtoConvertor } from "src/domain/convertors/profile.convertor";
 import { IProfileDataService } from "src/domain/dataservice/profile.dataservice";
-import { CreateUserReqDto, CreateUserResDto } from "src/infrastructure";
+import { GetProfileReqDto, GetProfileResDto } from "src/infrastructure";
 import { TYPES } from "src/infrastructure/common";
 import { MESSAGES } from "src/infrastructure/common/messages";
 import { IResponse } from "src/parko/core/domain";
@@ -18,9 +18,12 @@ export class GetProfile implements ICommandHandler {
     private profileDtoConvertor: IProfileDtoConvertor
   ) {}
 
-  async execute(id: string): Promise<IResponse<CreateUserResDto>> {
+  async execute(
+    getProfileReqDto: GetProfileReqDto
+  ): Promise<IResponse<GetProfileResDto>> {
+    const { id } = getProfileReqDto;
     const profileM: ProfileM = await this.profileDataService.getProfile(id);
-    const data: CreateUserResDto =
+    const data: GetProfileResDto =
       await this.profileDtoConvertor.toGetProfileResDto(profileM);
     try {
       return {

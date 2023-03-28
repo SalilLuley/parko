@@ -1,7 +1,11 @@
 import { injectable } from "inversify";
 import { ProfileM } from "src/domain";
 import { IProfileDtoConvertor } from "src/domain/convertors/profile.convertor";
-import { CreateUserReqDto, CreateUserResDto } from "../controller";
+import {
+  CreateUserReqDto,
+  CreateUserResDto,
+  GetProfileResDto,
+} from "../controller";
 
 @injectable()
 export class ProfileDtoConvertor implements IProfileDtoConvertor {
@@ -11,7 +15,7 @@ export class ProfileDtoConvertor implements IProfileDtoConvertor {
     };
   }
 
-  toGetProfileResDto(profileM: ProfileM): CreateUserResDto {
+  toGetProfileResDto(profileM: ProfileM): GetProfileResDto {
     return { ...profileM };
   }
 }

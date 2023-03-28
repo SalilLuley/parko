@@ -4,8 +4,8 @@ import { DocumentBuilder, OpenAPIObject, SwaggerModule } from "@nestjs/swagger";
 import helmet from "helmet";
 import { AppModule } from "./infrastructure";
 import { ResponseInterceptor } from "./parko/core/infrastructure";
-
 import "reflect-metadata";
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix(`${process.env.API_PREFIX}/${process.env.VERSION}`);

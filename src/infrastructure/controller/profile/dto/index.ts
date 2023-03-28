@@ -1,2 +1,4 @@
-export { CreateUserReqDto } from "./createUserReq.dto";
-export { CreateUserResDto } from "./createUserRes.dto";
+export { CreateUserReqDto } from "./createProfileReq.dto";
+export { CreateUserResDto } from "./createProfileRes.dto";
+export { GetProfileReqDto } from "./getProfileReq.dto";
+export { GetProfileResDto } from "./getProfileRes.dto";

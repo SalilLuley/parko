@@ -1,7 +1,11 @@
-import { CreateUserReqDto, CreateUserResDto } from "src/infrastructure";
+import {
+  CreateUserReqDto,
+  CreateUserResDto,
+  GetProfileResDto,
+} from "src/infrastructure";
 import { ProfileM } from "../model";
 
 export interface IProfileDtoConvertor {
   toCreateUserReqDto(CreateUserReqDto: CreateUserReqDto): ProfileM;
-  toGetProfileResDto(profileM: ProfileM): CreateUserResDto;
+  toGetProfileResDto(profileM: ProfileM): GetProfileResDto;
 }
