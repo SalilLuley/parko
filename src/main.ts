@@ -35,7 +35,7 @@ async function bootstrap() {
       extraModels: [ResponseFormat],
       deepScanRoutes: true,
     });
-    SwaggerModule.setup("api", app, document);
+    SwaggerModule.setup("parko/v1/api", app, document);
   }
 
   await app.listen(3000);

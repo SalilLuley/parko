@@ -1,4 +1,4 @@
-import { Injectable, InternalServerErrorException } from "@nestjs/common";
+import { InternalServerErrorException } from "@nestjs/common";
 import { inject, injectable } from "inversify";
 import { ProfileM } from "src/domain";
 import { IProfileDtoConvertor } from "src/domain/convertors/profile.convertor";
@@ -8,7 +8,6 @@ import { TYPES } from "src/infrastructure/common";
 import { MESSAGES } from "src/infrastructure/common/messages";
 import { IResponse } from "src/parko/core/domain";
 import { ICommandHandler } from "src/parko/core/handler/commandHandler";
-import { LoggerService } from "src/parko/logger/logger.service";
 
 @injectable()
 export class GetProfile implements ICommandHandler {

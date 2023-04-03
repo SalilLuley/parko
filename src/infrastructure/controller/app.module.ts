@@ -1,11 +1,15 @@
 import { Module } from "@nestjs/common";
-import { GetProfile } from "src/application/usecase";
-import { LoggerModule } from "src/parko/logger/logger.module";
+import { JwtModule } from "@nestjs/jwt";
+import { LoginController } from "./login";
 import { ProfileController } from "./profile";
 
 @Module({
-  imports: [],
-  controllers: [ProfileController],
+  imports: [
+    JwtModule.register({
+      secret: process.env.JWT_SECRET,
+    }),
+  ],
+  controllers: [ProfileController, LoginController],
   providers: [],
 })
 export class AppModule {}

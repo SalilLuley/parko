@@ -7,4 +7,7 @@ export const MESSAGES = {
       SUCCESS: "Profile fetched.",
     },
   },
+  LOGIN: {
+    SUCCESS: "User logged in successfully.",
+  },
 };

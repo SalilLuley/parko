@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from "@nestjs/common";
+import { Controller, Get, Param, UseGuards } from "@nestjs/common";
 import { ApiExtraModels, ApiOkResponse } from "@nestjs/swagger";
 import { Container } from "inversify/lib/container/container";
 import { ICommandHandler } from "src/parko/core/handler/commandHandler";
@@ -11,6 +11,7 @@ import {
   GetProfileReqDto,
   GetProfileResDto,
 } from "./dto";
+import { AuthGuard } from "src/infrastructure/guards/auth.guard";
 
 @Controller("profile")
 @ApiExtraModels(
@@ -26,6 +27,7 @@ export class ProfileController {
   }
 
   @Get("/:id")
+  @UseGuards(AuthGuard)
   @ApiResponseOk(GetProfileResDto)
   async create(@Param() getProfileReqDto: GetProfileReqDto) {
     const commandHandler: ICommandHandler =

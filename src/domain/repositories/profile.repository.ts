@@ -1,3 +1,4 @@
 export interface IProfileRepository {
-  createProfile<T>(id: string): Promise<T>;
+  getProfile<T>(id: string): Promise<T>;
+  getProfileByUsername<T>(username: string): Promise<T>;
 }

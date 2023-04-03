@@ -19,7 +19,7 @@ export class ProfileDataService implements IProfileDataService {
 
   async getProfile(id: string): Promise<ProfileM> {
     const userEntity: UserEntity =
-      await this.profileRepository.createProfile<UserEntity>(id);
+      await this.profileRepository.getProfile<UserEntity>(id);
     return this.profileModelConvertor.toProfileMFromUserEntity(userEntity);
   }
 }
